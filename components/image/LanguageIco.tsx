@@ -1,0 +1,19 @@
+import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import Svg, { Path } from 'react-native-svg'
+
+const LanguageIco = () => {
+  return (
+    <View>
+    <Svg width="24" height="24" viewBox="0 0 24 24" fill="none" >
+<Path d="M2 12C2 17.523 6.477 22 12 22C17.523 22 22 17.523 22 12C22 6.477 17.523 2 12 2C6.477 2 2 6.477 2 12Z" stroke="#8B4513" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<Path d="M12.9999 2.0498C12.9999 2.0498 15.9999 5.9998 15.9999 11.9998C15.9999 17.9998 12.9999 21.9498 12.9999 21.9498M10.9999 21.9498C10.9999 21.9498 7.99988 17.9998 7.99988 11.9998C7.99988 5.9998 10.9999 2.0498 10.9999 2.0498M2.62988 15.4998H21.3699M2.62988 8.4998H21.3699" stroke="#8B4513" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</Svg>
+
+    </View>
+  )
+}
+
+export default LanguageIco
+
+const styles = StyleSheet.create({})

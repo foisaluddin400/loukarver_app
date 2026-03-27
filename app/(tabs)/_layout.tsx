@@ -1,33 +1,66 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { Tabs } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
+import HomeMenuIco from "@/components/image/HomeMenuIco";
+import ConnectIco from "@/components/image/ConnectIco";
+import DatesMenuIco from "@/components/image/DatesMenuIco";
+import FutureMenuIco from "@/components/image/FutureMenuIco";
+import MapMenuIco from "@/components/image/MapMenuIco";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
-        tabBarButton: HapticTab,
-      }}>
+        tabBarActiveTintColor: "#8B4513",
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: "Home",
+          tabBarIcon: ({ color}) => (
+            <HomeMenuIco   color={color} />
+          ),
         }}
       />
+
       <Tabs.Screen
-        name="explore"
+        name="connect"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: "Connect",
+          tabBarIcon: ({ color}) => (
+            <ConnectIco  color={color} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="dates"
+        options={{
+          title: "Dates",
+          tabBarIcon: ({ color }) => (
+            <DatesMenuIco  color={color} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="future"
+        options={{
+          title: "Future",
+          tabBarIcon: ({ color}) => (
+            <FutureMenuIco  color={color} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="map"
+        options={{
+          title: "Map",
+          tabBarIcon: ({ color}) => (
+            <MapMenuIco color={color} />
+          ),
         }}
       />
     </Tabs>
