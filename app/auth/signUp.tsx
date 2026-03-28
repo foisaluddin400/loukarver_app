@@ -7,25 +7,36 @@ import {
   TouchableOpacity,
   StyleSheet,
   ScrollView,
- 
+  SafeAreaView,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
-const Login = () => {
+const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [rememberMe, setRememberMe] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-  const PRIMARY = '#6F370F';
+  const PRIMARY = '#6F370F';   // Updated to match your app's primary color
+
+  const handleSignUp = () => {
+    if (password !== confirmPassword) {
+      alert("Passwords don't match!");
+      return;
+    }
+    // Add your signup logic here
+    console.log('Signing up with:', email);
+    router.push('/(tabs)');   // Navigate to main app after signup
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
         
-        {/* Welcome Text */}
+        {/* Header / Welcome */}
         <View style={styles.welcomeContainer}>
-          <Text style={styles.welcomeText}>Welcome</Text>
-          <Text style={styles.subtitle}>Sign in to continue</Text>
+          <Text style={styles.welcomeText}>Sign Up</Text>
+          <Text style={styles.subtitle}>
+            Deepen your connection, plan your future and keep the spark alive
+          </Text>
         </View>
 
         {/* Form Fields */}
@@ -40,6 +51,7 @@ const Login = () => {
             onChangeText={setEmail}
             keyboardType="email-address"
             autoCapitalize="none"
+            autoCorrect={false}
             placeholderTextColor="#999"
           />
 
@@ -54,33 +66,30 @@ const Login = () => {
             placeholderTextColor="#999"
           />
 
-          {/* Remember Me & Forgot Password */}
-          <View style={styles.optionsRow}>
-            <TouchableOpacity 
-              style={styles.rememberContainer}
-              onPress={() => setRememberMe(!rememberMe)}
-            >
-              <View style={[styles.checkbox, rememberMe && { backgroundColor: PRIMARY, borderColor: PRIMARY }]}>
-                {rememberMe && <Text style={styles.checkmark}>✓</Text>}
-              </View>
-              <Text style={styles.rememberText}>Remember me</Text>
-            </TouchableOpacity>
+          {/* Confirm Password */}
+          <Text style={styles.label}>Confirm Password</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Re-type your password"
+            value={confirmPassword}
+            onChangeText={setConfirmPassword}
+            secureTextEntry
+            placeholderTextColor="#999"
+          />
 
-            <TouchableOpacity>
-              <Text style={styles.forgotText}>Forget password?</Text>
-            </TouchableOpacity>
-          </View>
-
-          {/* Login Button */}
-          <TouchableOpacity onPress={() => router.push("/(tabs)")} style={[styles.loginButton, { backgroundColor: PRIMARY }]}>
-            <Text style={styles.loginButtonText}>Login</Text>
+          {/* Sign Up Button */}
+          <TouchableOpacity 
+            onPress={handleSignUp} 
+            style={[styles.signUpButton, { backgroundColor: PRIMARY }]}
+          >
+            <Text style={styles.signUpButtonText}>Sign Up</Text>
           </TouchableOpacity>
 
-          {/* Sign Up Link */}
-          <View style={styles.signupContainer}>
-            <Text style={styles.signupText}>Don't have an account? </Text>
-            <TouchableOpacity onPress={() => router.push("/auth/signUpStep")}>
-              <Text style={[styles.signupLink, { color: PRIMARY }]}>Sign Up</Text>
+          {/* Login Link */}
+          <View style={styles.loginContainer}>
+            <Text style={styles.loginText}>Already have an account? </Text>
+            <TouchableOpacity onPress={() => router.push('/auth/login')}>
+              <Text style={[styles.loginLink, { color: PRIMARY }]}>Login</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -99,6 +108,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     paddingHorizontal: 12,
     paddingTop: 60,
+    paddingBottom: 40,
   },
   welcomeContainer: {
     alignItems: 'center',
@@ -113,6 +123,8 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 16,
     color: '#8B5A2B',
+    textAlign: 'center',
+    lineHeight: 24,
   },
   formContainer: {
     width: '100%',
@@ -127,71 +139,36 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: '#B7835E',
+    borderColor: '#D4B89F',
     borderRadius: 16,
     paddingHorizontal: 18,
     paddingVertical: 16,
     fontSize: 16,
     color: '#333',
   },
-  optionsRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: 16,
-    marginBottom: 30,
-  },
-  rememberContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  checkbox: {
-    width: 20,
-    height: 20,
-    borderWidth: 2,
-    borderColor: '#B7835E',
-    borderRadius: 6,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 8,
-  },
-  checkmark: {
-    color: '#FFFFFF',
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
-  rememberText: {
-    fontSize: 15,
-    color: '#666',
-  },
-  forgotText: {
-    fontSize: 15,
-    color: '#B7835E',
-    fontWeight: '400',
-  },
-  loginButton: {
+  signUpButton: {
     paddingVertical: 16,
     borderRadius: 30,
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: 40,
   },
-  loginButtonText: {
+  signUpButtonText: {
     color: '#FFFFFF',
     fontSize: 17,
     fontWeight: '500',
   },
-  signupContainer: {
+  loginContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     marginTop: 30,
   },
-  signupText: {
+  loginText: {
     color: '#666',
     fontSize: 15,
   },
-  signupLink: {
-    fontWeight: '400',
+  loginLink: {
+    fontWeight: '500',
   },
 });
 
-export default Login;
+export default SignUp;
