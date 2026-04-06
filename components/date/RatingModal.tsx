@@ -31,9 +31,9 @@ const RatingModal: React.FC<Props> = ({
   onDone,
 }) => {
   return (
-    <Modal visible={visible} transparent animationType="slide">
+ <Modal visible={visible} transparent animationType="fade">
       <View style={styles.overlay}>
-        <View style={styles.bottomModal}>
+        <View style={styles.modal}>
           <TouchableOpacity style={styles.closeBtn} onPress={onDone}>
             <Text style={styles.closeText}>✕</Text>
           </TouchableOpacity>
@@ -70,16 +70,21 @@ export default RatingModal;
 const PRIMARY = "#6F370F";
 
 const styles = StyleSheet.create({
-  overlay: {
-    flex: 1,
-    justifyContent: "flex-end",
-  },
-  bottomModal: {
-    backgroundColor: "#fff",
-    padding: 12,
+  modal: {
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
+    backgroundColor: "white",
+    padding: 14,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
   },
+  overlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent: "flex-end",
+  },
+
   closeBtn: {
     position: "absolute",
     right: 15,

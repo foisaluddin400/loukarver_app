@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
-
+import { BlurView } from "expo-blur";
 type Props = {
   visible: boolean;
   onClose: () => void;
@@ -18,13 +18,13 @@ const LIGHT_BG = "#FBF7F2";
 const data = ["🍕", "🍕", "🍕", "🍕", "🍕", "🍕", "🍕"];
 const AddDateModal = ({ visible, onClose }: Props) => {
   return (
-    <Modal transparent animationType="slide" visible={visible}>
+    <Modal visible={visible} transparent animationType="fade">
       <View style={styles.overlay}>
         <View style={styles.modal}>
           <TouchableOpacity style={styles.closeBtn} onPress={onClose}>
             <Text style={styles.closeText}>✕</Text>
           </TouchableOpacity>
-    
+
           <Text style={styles.title}>Add Important Date</Text>
 
           <View
@@ -101,15 +101,19 @@ const AddDateModal = ({ visible, onClose }: Props) => {
 export default AddDateModal;
 
 const styles = StyleSheet.create({
- overlay: {
-    flex: 1,
-    justifyContent: "flex-end",
-  },
   modal: {
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
     backgroundColor: "white",
-    padding: 20,
-    borderTopLeftRadius: 26,
-    borderTopRightRadius: 26,
+    padding: 14,
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+  },
+  overlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent: "flex-end",
   },
 
   closeBtn: {
@@ -125,7 +129,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     fontSize: 14,
   },
- title: {
+  title: {
     fontSize: 20,
     fontWeight: "500",
     color: PRIMARY,
