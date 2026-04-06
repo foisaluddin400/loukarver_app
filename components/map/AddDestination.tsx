@@ -31,10 +31,9 @@ const AddDestination = ({ visible, onClose }: Props) => {
   ] as const;
 
   return (
-    <Modal transparent animationType="slide" visible={visible}>
+  <Modal visible={visible} transparent animationType="fade">
       <View style={styles.overlay}>
         <View style={styles.modal}>
-          
           {/* Close Button */}
           <TouchableOpacity style={styles.closeBtn} onPress={onClose}>
             <Text style={styles.closeText}>✕</Text>
@@ -111,19 +110,21 @@ const AddDestination = ({ visible, onClose }: Props) => {
 };
 
 const styles = StyleSheet.create({
+  modal: {
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
+    backgroundColor: "white",
+    padding: 14,
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+  },
   overlay: {
     flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)",
     justifyContent: "flex-end",
+  },
 
-  },
-  modal: {
-    backgroundColor: "white",
-    padding:12,
-    paddingTop: 20,
-    borderTopLeftRadius: 26,
-    borderTopRightRadius: 26,
-    minHeight: 480,
-  },
   closeBtn: {
     position: "absolute",
     right: 20,

@@ -7,6 +7,7 @@ import {
   StyleSheet,
   TextInput,
   Switch,
+  ScrollView,
 } from "react-native";
 
 type Props = {
@@ -20,13 +21,13 @@ const LIGHT_BG = "#FBF7F2";
 
 const AddMilestoneModal = ({ visible, onClose }: Props) => {
   return (
-    <Modal transparent animationType="slide" visible={visible}>
+ <Modal visible={visible} transparent animationType="fade">
       <View style={styles.overlay}>
-        <View style={styles.modal}>
+        <ScrollView style={styles.modal}>
           {/* Close */}
-          <TouchableOpacity style={styles.closeBtn} onPress={onClose}>
-            <Text style={styles.closeText}>✕</Text>
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.closeBtn} onPress={onClose}>
+                    <Text style={styles.closeText}>✕</Text>
+                  </TouchableOpacity>
 
           {/* Title */}
           <Text style={styles.title}>New Milestone</Text>
@@ -99,7 +100,7 @@ const AddMilestoneModal = ({ visible, onClose }: Props) => {
           <TouchableOpacity style={styles.createBtn}>
             <Text style={styles.createBtnText}>Create Milestone</Text>
           </TouchableOpacity>
-        </View>
+        </ScrollView>
       </View>
     </Modal>
   );
@@ -107,18 +108,22 @@ const AddMilestoneModal = ({ visible, onClose }: Props) => {
 
 export default AddMilestoneModal;
 const styles = StyleSheet.create({
+modal: {
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
+    backgroundColor: "white",
+    padding: 14,
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+  },
   overlay: {
     flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)",
     justifyContent: "flex-end",
   },
-  modal: {
-    backgroundColor: "white",
-    padding: 12,
-    borderTopLeftRadius: 26,
-    borderTopRightRadius: 26,
-  },
 
-  closeBtn: {
+ closeBtn: {
     position: "absolute",
     right: 15,
     top: 10,
