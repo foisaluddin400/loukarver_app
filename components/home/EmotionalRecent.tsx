@@ -16,7 +16,7 @@ const EmotionalRecent: React.FC = () => {
   const [memoryModal, setMemoryModal] = useState<boolean>(false);
   const [messages, setMessages] = useState<string[]>([]);
   const [msgInput, setMsgInput] = useState<string>("");
-
+  const [open, setOpen] = useState(false);
   const shareCheckIn = () => {
     setCheckModal(false);
     setCheckResultModal(true);
@@ -55,10 +55,10 @@ const EmotionalRecent: React.FC = () => {
       <View style={styles.memoryHeader}>
         <Text style={styles.sectionTitle}>RECENT MEMORIES</Text>
 
-        <TouchableOpacity
-          style={styles.addMemory}
-          onPress={() => setMemoryModal(true)}
-        >
+       <TouchableOpacity
+     style={styles.addMemory}
+       onPress={() => setOpen(true)}
+      >
           <Text>+ Add Memory</Text>
         </TouchableOpacity>
       </View>
@@ -108,9 +108,10 @@ const EmotionalRecent: React.FC = () => {
       />
 
       <AddMemoryModal
-        visible={memoryModal}
-        onClose={() => setMemoryModal(false)}
+     visible={open} onClose={() => setOpen(false)}
       />
+
+
     </View>
   );
 };

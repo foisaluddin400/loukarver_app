@@ -3,6 +3,8 @@ import SentIco from '@/components/image/SentIco';
 import SettingIco from '@/components/image/SettingIco';
 import SuggestIco from '@/components/image/SuggestIco';
 import TimeIco from '@/components/image/TimeIco';
+import { Ionicons } from '@expo/vector-icons';
+import { router } from 'expo-router';
 import React, { useState } from 'react';
 import {
  
@@ -42,6 +44,15 @@ const SuggestActivityAdd = () => {
         contentContainerStyle={styles.content}
         showsVerticalScrollIndicator={false}
       >
+        <View style={styles.header}>
+        <TouchableOpacity
+          onPress={() => router.back()}
+          style={styles.backButton}
+        >
+          <Ionicons name="chevron-back" size={24} color="#8B4513" />
+        </TouchableOpacity>
+        <Text style={styles.headerTitle}>Suggest Activity</Text>
+      </View>
         {/* Heading */}
         <Text style={styles.sectionLabel}>CHOOSE A CATEGORY</Text>
 
@@ -178,7 +189,26 @@ const styles = StyleSheet.create({
     color: "#6F370F",
   },
 
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginVertical: 10,
 
+  },
+  backButton: {},
+  backIcon: {
+    fontSize: 28,
+    color: "#6F370F",
+    fontWeight: "bold",
+  },
+  headerTitle: {
+    flex: 1,
+    textAlign: "center",
+    fontSize: 18,
+    fontWeight: "700",
+    color: "#6F370F",
+    letterSpacing: 1,
+  },
 
 
 
