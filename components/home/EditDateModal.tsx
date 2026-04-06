@@ -18,7 +18,7 @@ const BORDER = "#B7835E";
 const LIGHT_BG = "#FBF7F2";
 const EditDateModal = ({ visible, onClose }: Props) => {
   return (
-    <Modal transparent animationType="slide" visible={visible}>
+    <Modal visible={visible} transparent animationType="fade">
       <View style={styles.overlay}>
         <View style={styles.modal}>
           <TouchableOpacity style={styles.closeBtn} onPress={onClose}>
@@ -56,16 +56,21 @@ const EditDateModal = ({ visible, onClose }: Props) => {
 export default EditDateModal;
 
 const styles = StyleSheet.create({
- overlay: {
+modal: {
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
+    backgroundColor: "white",
+    padding: 14,
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+  },
+  overlay: {
     flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)",
     justifyContent: "flex-end",
   },
-  modal: {
-    backgroundColor: "white",
-    padding: 20,
-    borderTopLeftRadius: 26,
-    borderTopRightRadius: 26,
-  },
+
 
   closeBtn: {
     position: "absolute",

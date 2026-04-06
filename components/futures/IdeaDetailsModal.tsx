@@ -39,7 +39,7 @@ const IdeaDetailsModal: React.FC<Props> = ({ visible, onClose }) => {
   };
 
   return (
-    <Modal visible={visible} transparent animationType="slide">
+ <Modal visible={visible} transparent animationType="fade">
       <View style={styles.overlay}>
         <View style={styles.modal}>
           {/* Close */}
@@ -124,16 +124,19 @@ const Step = ({ label, checked = false }: any) => (
 export default IdeaDetailsModal;
 
 const styles = StyleSheet.create({
-  overlay: {
-    flex: 1,
-    justifyContent: "flex-end",
-  
-  },
-  modal: {
-    backgroundColor: "#fff",
-    padding: 12,
+modal: {
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
+    backgroundColor: "white",
+    padding: 14,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
+  },
+  overlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent: "flex-end",
   },
 
   closeBtn: {

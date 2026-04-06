@@ -13,13 +13,14 @@ type Props = {
   onClose: () => void;
 };
 
-const AddMemoryModal: React.FC<Props> = ({ visible, onClose }) => {
+const AddMemoryModal = ({ visible, onClose }: Props) => {
   return (
-    <Modal visible={visible} transparent animationType="slide">
-      <View style={styles.bottomModal}>
-        <TouchableOpacity style={styles.closeBtn} onPress={onClose}>
-          <Text style={styles.closeText}>✕</Text>
-        </TouchableOpacity>
+     <Modal visible={visible} transparent animationType="fade">
+      <View style={styles.overlay}>
+        <View style={styles.modal}>
+            <TouchableOpacity style={styles.closeBtn} onPress={onClose}>
+                  <Text style={styles.closeText}>✕</Text>
+                </TouchableOpacity>
 
         <Text style={styles.modalTitle}>Add a Memory</Text>
 
@@ -49,6 +50,7 @@ const AddMemoryModal: React.FC<Props> = ({ visible, onClose }) => {
           <Text style={{ color: "#fff" }}>Save Memory</Text>
         </TouchableOpacity>
       </View>
+      </View>
     </Modal>
   );
 };
@@ -56,6 +58,38 @@ const AddMemoryModal: React.FC<Props> = ({ visible, onClose }) => {
 export default AddMemoryModal;
 
 const styles = StyleSheet.create({
+modal: {
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
+    backgroundColor: "white",
+    padding: 14,
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+  },
+  overlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent: "flex-end",
+  },
+
+
+  closeBtn: {
+    position: "absolute",
+    right: 15,
+    top: 10,
+    zIndex: 10,
+  },
+  closeText: {
+    backgroundColor: '#FBF7F2',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 20,
+    fontSize: 14,
+  },
+
+
+
   bottomModal: {
     position: "absolute",
     bottom: 0,
@@ -66,15 +100,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     maxHeight: "90%",
   },
-  closeBtn: { position: "absolute", right: 15, top: 10, zIndex: 10 },
-  closeText: {
-    fontSize: 12,
-    backgroundColor: "#FBF7F2",
-    padding: 7,
-    fontWeight: "bold",
-    color: "#333",
-    borderRadius: 20,
-  },
+
   modalTitle: {
     fontSize: 18,
     marginBottom: 15,
