@@ -13,7 +13,7 @@ const LIGHT_BG = "#FBF7F2";
 
 const GoodNightModal = ({ visible, onClose }: Props) => {
   return (
-    <Modal transparent animationType="slide" visible={visible}>
+ <Modal visible={visible} transparent animationType="fade">
       <View style={styles.overlay}>
         <View style={styles.modal}>
           {/* Close */}
@@ -87,16 +87,21 @@ const GoodNightModal = ({ visible, onClose }: Props) => {
 
 export default GoodNightModal;
 const styles = StyleSheet.create({
+modal: {
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
+    backgroundColor: "white",
+    padding: 14,
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+  },
   overlay: {
     flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)",
     justifyContent: "flex-end",
   },
-  modal: {
-    backgroundColor: "white",
-    padding: 12,
-    borderTopLeftRadius: 26,
-    borderTopRightRadius: 26,
-  },
+
 
   closeBtn: {
     position: "absolute",

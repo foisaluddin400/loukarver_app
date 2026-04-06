@@ -105,7 +105,8 @@ const styles = StyleSheet.create({
   },
   tab: {
     flex: 1,
-    padding: 10,
+
+    paddingVertical:10,
     alignItems: "center",
   },
   activeTab: {
